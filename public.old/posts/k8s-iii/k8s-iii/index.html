@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>My Amateur Experience with Kubernetes - III :: czernobog.org</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Part 3 or 3 - In this final blog post my kubernetes basics series, I recount my first-hand experience of working with Kubernetes, detailing the challenges I faced and the valuable lessons I learned along the way." />
+<meta name="keywords" content=", " />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="https://czernobog.org/posts/k8s-iii/k8s-iii/" />
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://czernobog.org/styles.css">
+
+
+
+
+
+
+
+  <link rel="shortcut icon" href="https://czernobog.org/img/theme-colors/blue.png">
+  <link rel="apple-touch-icon" href="https://czernobog.org/img/theme-colors/blue.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="My Amateur Experience with Kubernetes - III">
+<meta property="og:description" content="Part 3 or 3 - In this final blog post my kubernetes basics series, I recount my first-hand experience of working with Kubernetes, detailing the challenges I faced and the valuable lessons I learned along the way." />
+<meta property="og:url" content="https://czernobog.org/posts/k8s-iii/k8s-iii/" />
+<meta property="og:site_name" content="czernobog.org" />
+
+  
+  
+  <meta property="og:image" content="https://czernobog.org/">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2023-04-25 16:29:31 &#43;0530 IST" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="blue">
+
+
+<div class="container center headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    Terminal
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/donate">Donate</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/about" >About</a></li>
+        
+      
+        
+          <li><a href="/donate" >Donate</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="https://czernobog.org/posts/k8s-iii/k8s-iii/">My Amateur Experience with Kubernetes - III</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2023-04-25</time><span class="post-author">Czernobog</span></div>
+
+  
+    <span class="post-tags">
+      
+      #<a href="https://czernobog.org/tags/">#Kubernetes</a>&nbsp;
+      
+      #<a href="https://czernobog.org/tags/">#Challenges</a>&nbsp;
+      
+      #<a href="https://czernobog.org/tags/">#Learning</a>&nbsp;
+      
+      #<a href="https://czernobog.org/tags/">#Concepts</a>&nbsp;
+      
+      #<a href="https://czernobog.org/tags/">#MyFirstExperience</a>&nbsp;
+      
+      #<a href="https://czernobog.org/tags/">#Part-3of3</a>&nbsp;
+      
+    </span>
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <h3 id="final-part">Final Part<a href="#final-part" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>My recent experience with deploying an Angular application on Kubernetes was both challenging and exciting. I didn’t have the complete setup for the application and I knew it would take days to set up. So, my colleague provided me with a pre-built jar file. After that, I created a docker image of the Angular application and deployed it on Docker using a simple docker-compose.yml file to check if it worked.</p>
+<p>Once I verified that the application was working in Docker, I created a kubernetes manifest for the Angular application with a service for it. This was a significant milestone for me as I had to go through many tutorials to understand the process. However, I faced an unexpected issue when I deployed the kubernetes manifest and checked the website with kubectl port-forward. Although the website was accessible, there was no data in it.</p>
+<p>I spent a considerable amount of time investigating the issue and trying different solutions to resolve it, but nothing worked. I eventually realized that I might need an ingress service to fetch the details from the database. It was not an easy fix, and I had to search for creating an ingress service between the Spring Boot and Angular applications. During the process, I encountered another challenge where I could only access the website if I used the command kubectl port-forward. I wanted to access the website without using that command every time, so I had to deal with a load balancer as well.</p>
+<p>Creating the ingress was a bit challenging, and I had to seek help from (another shout-out) Deaddy who assisted me in understanding the process. After successfully deploying the ingress, I could see all the data, and the website was now dynamic instead of static, which was a great achievement. I also deployed the load balancer, which allowed me to access the website directly using the IP Address and port.</p>
+<p>Finally, I edited my <code>hosts</code> file and assigned a domain name to the URL, and now I had an actual website working on Kubernetes (without an SSL certificate). It was a thrilling experience to overcome the challenges and deploy the Angular application on Kubernetes, and I was happy to have achieved my goal.</p>
+<h3 id="challenges">Challenges<a href="#challenges" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>These are some of the challenges I faced while learning Kubernetes:</p>
+<p><strong>Lack of understanding of Kubernetes basics:</strong> Directly diving in to MySQL and Springboot before learning the basics of Kubernetes. This approach may have made it difficult to understand how Kubernetes works and how it can be used to manage containers effectively.</p>
+<p><strong>Copying instead of understanding:</strong> I had difficulty with creating Kubernetes manifests and eventually copying and pasting them from a tutorial. While this approach may work initially, it may be challenging to modify or debug Kubernetes manifests without a fundamental understanding of them.</p>
+<p><strong>Trial and error approach:</strong> I used a trial and error approach to get the Angular application working in Kubernetes. While this may have been successful, it is a time-consuming and inefficient approach to problem-solving.</p>
+<p><strong>Time constraints:</strong> I had to learn Kubernetes within 30 days, which may have put pressure on me resulting in to take shortcuts or not fully understand the concepts before moving on to the next step. This may have affected the overall quality of the learning experience too.</p>
+<h3 id="conclusion">Conclusion<a href="#conclusion" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>In conclusion, this experience has taught me a lot about the importance of attention to detail and taking the time to properly configure each aspect of the application.</p>
+<p>It was also my first time working with a team and this also made me more productive in general and I had a lot of fun working on it.</p>
+<p>While it was frustrating at times, the feeling of satisfaction when everything finally came together was worth it. I am excited to continue learning and expanding my skills in this field.</p>
+
+      </div></div>
+
+  
+    
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        
+        <span class="button next">
+            <a href="https://czernobog.org/posts/k8s-ii/k8s-ii/">
+                <span class="button__text">My Amateur Experience with Kubernetes - II</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2023 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>
